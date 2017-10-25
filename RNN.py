@@ -34,7 +34,16 @@ google_y_train=google_train_set[1:1258]
 google_x_train=np.reshape(google_x_train,(1257,1,1))
 
 #**********APPLE**********
+apple_train_set=pd.read_csv("Apple_Stock_Price_Train.csv")
+apple_train_set=apple_train_set.iloc[:,1:2]
 
+apple_scaler=MinMaxScaler()
+apple_train_set=apple_scaler.fit_transform(apple_train_set)
+
+apple_x_train=apple_train_set[0:1257]
+apple_y_train=apple_train_set[1:1258]
+
+apple_x_train=np.reshape(apple_x_train,(1257,1,1))
 
 #**********AMAZON**********
 
