@@ -1,85 +1,137 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 25 21:59:48 2017
-
-@author: nihal369
-"""
-
-#Data Preprocessing
-
 #Importing the libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#Importing the training set
-train_set=pd.read_csv("Google_Stock_Price_Train.csv")
-#Splitting to opening price,2D import to fit the RNN
-train_set=train_set.iloc[:,1:2].values
-
-#Scaling the training set,Normalize for a value between 0 and 1
-from sklearn.preprocessing import MinMaxScaler
-scaler=MinMaxScaler()
-train_set=scaler.fit_transform(train_set)
-
-#x_train -> Stock price of day x,used for predicting the stock price of day x+k,where k is the timeframe
-#y_train -> Stock price of day x+k
-
-x_train=train_set[0:1257]
-y_train=train_set[1:1258]
-
-
-#Reshaping the training set,Including the timeframe value
-x_train=np.reshape(x_train,(1257,1,1))
-
-
-#Neural Network
-
-#Importing the libraries
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
 
+from sklearn.preprocessing import MinMaxScaler
+
+#PART 1:Data Preprocessing
+
+
+#Importing the training set & Splitting to opening price,2D import to fit the RNN
+
+#**********GOOGLE**********
+google_train_set=pd.read_csv("Google_Stock_Price_Train.csv")
+google_train_set=google_train_set.iloc[:,1:2].values
+
+
+#Scaling the training set,Normalize for a value between 0 and 1
+google_scaler=MinMaxScaler()
+google_train_set=google_scaler.fit_transform(google_train_set)
+
+#x_train -> Stock price of day x,used for predicting the stock price of day x+k,where k is the timeframe
+#y_train -> Stock price of day x+k
+
+google_x_train=google_train_set[0:1257]
+google_y_train=google_train_set[1:1258]
+
+
+#Reshaping the training set,Including the timeframe value
+google_x_train=np.reshape(google_x_train,(1257,1,1))
+
+#**********APPLE**********
+
+
+#**********AMAZON**********
+
+
+#**********MICROSOFT**********
+
+
+#**********TESLA**********
+
+
+
+#PART 2:Neural Network
+
+#**********GOOGLE**********
+
 #Initalizing the RNN
-rnn=Sequential()
+google_rnn=Sequential()
 
 #Adding the LSTM RNN Input layer
 #Input shape:timeframe and number of input nodes
-rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(1,1)))
+google_rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(1,1)))
 
 #Adding the output layer
-rnn.add(Dense(units=1))
+google_rnn.add(Dense(units=1))
 
 #Compiling the RNN
-rnn.compile(optimizer='adam',loss='mean_squared_error')
+google_rnn.compile(optimizer='adam',loss='mean_squared_error')
 
 #Fitting the RNN
-rnn.fit(x_train,y_train,batch_size=16,epochs=200)
+google_rnn.fit(google_x_train,google_y_train,batch_size=16,epochs=200)
+
+#**********APPLE**********
 
 
-#Prediction
+#**********AMAZON**********
+
+
+#**********MICROSOFT**********
+
+
+#**********TESLA**********
+
+
+
+#PART 3:Prediction
+
 
 #Importing the test set
-test_set=pd.read_csv("Google_Stock_Price_Test.csv")
+google_test_set=pd.read_csv("Google_Stock_Price_Test.csv")
 #Splitting the opening price
-real_stock_price=test_set.iloc[:,1:2].values
+google_real_stock_price=google_test_set.iloc[:,1:2].values
 
 #Scaling the real prices,int the same format of training set
-inputs=real_stock_price
-inputs=scaler.transform(inputs)
-inputs=np.reshape(inputs,(20,1,1))
+
+#**********GOOGLE**********
+google_inputs=google_real_stock_price
+google_inputs=google_scaler.transform(google_inputs)
+google_inputs=np.reshape(google_inputs,(20,1,1))
 
 #Prediciting the stock prices for first 20 days of January 2017
-predicted_stock_price=rnn.predict(inputs)
+google_predicted_stock_price=google_rnn.predict(google_inputs)
 #Inverse scaling the predicted prices
-predicted_stock_price=scaler.inverse_transform(predicted_stock_price)
+google_predicted_stock_price=google_scaler.inverse_transform(google_predicted_stock_price)
 
-#Plotting
-plt.plot(real_stock_price,color='red',label='Real Price')
-plt.plot(predicted_stock_price,color='blue',label='Predicted Price')
+#**********APPLE**********
+
+
+#**********AMAZON**********
+
+
+#**********MICROSOFT**********
+
+
+#**********TESLA**********
+
+
+
+#PART 4:Plotting
+
+#**********GOOGLE**********
+plt.plot(google_real_stock_price,color='red',label='Real Price')
+plt.plot(google_predicted_stock_price,color='blue',label='Predicted Price')
 plt.xlabel("Days")
 plt.ylabel("Stock Price($)")
 plt.title("Google Stock Price Prediction (Jan 2017)")
 plt.legend()
 plt.show()
+
+#**********APPLE**********
+
+
+#**********AMAZON**********
+
+
+#**********MICROSOFT**********
+
+
+#**********TESLA**********
+
 
