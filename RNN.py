@@ -76,7 +76,11 @@ google_rnn.compile(optimizer='adam',loss='mean_squared_error')
 google_rnn.fit(google_x_train,google_y_train,batch_size=16,epochs=200)
 
 #**********APPLE**********
-
+apple_rnn=Sequential()
+apple_rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(None,1)))
+apple_rnn.add(Dense(units=1))
+apple_rnn.compile(optimizer='adam',loss='mean_squared_error')
+apple_rnn.fit(apple_x_train,apple_y_train,batch_size=16,epochs=200)
 
 #**********AMAZON**********
 
