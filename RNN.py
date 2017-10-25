@@ -113,8 +113,15 @@ google_predicted_stock_price=google_rnn.predict(google_inputs)
 google_predicted_stock_price=google_scaler.inverse_transform(google_predicted_stock_price)
 
 #**********APPLE**********
+apple_test_set=pd.read_csv("Apple_Stock_Price_Test.csv")
+apple_real_stock_price=apple_test_set.iloc[:,1:2].values
 
+apple_inputs=apple_real_stock_price
+apple_inputs=apple_scaler.transform(apple_inputs)
+apple_inputs=np.reshape(apple_inputs,(19,1,1))
 
+apple_predicted_stock_price=apple_rnn.predict(apple_inputs)
+apple_predicted_stock_price=apple_scaler.inverse_transform(apple_predicted_stock_price)
 #**********AMAZON**********
 
 
