@@ -50,3 +50,6 @@ rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(1,1)))
 #Adding the output layer
 rnn.add(Dense(units=6))
 
+#Compiling the rnn
+rnn.compile(optimizer='adam',loss='mean_squared_error')
+
