@@ -22,15 +22,15 @@ from sklearn.preprocessing import MinMaxScaler
 scaler=MinMaxScaler()
 train_set=scaler.fit_transform(train_set)
 
-#Reshaping the training set,Including the timeframe value
-train_set=np.reshape(train_set,(1258,1,1))
-
 #x_train -> Stock price of day x,used for predicting the stock price of day x+k,where k is the timeframe
 #y_train -> Stock price of day x+k
 
 x_train=train_set[0:1257]
 y_train=train_set[1:1258]
 
+
+#Reshaping the training set,Including the timeframe value
+x_train=np.reshape(x_train,(1257,1,1))
 
 
 #Neural Network
@@ -48,8 +48,10 @@ rnn=Sequential()
 rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(1,1)))
 
 #Adding the output layer
-rnn.add(Dense(units=6))
+rnn.add(Dense(units=1))
 
-#Compiling the rnn
+#Compiling the RNN
 rnn.compile(optimizer='adam',loss='mean_squared_error')
 
+#Fitting the RNN
+rnn.fit(x_train,y_train,batch_size=16,epochs=200)
