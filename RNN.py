@@ -46,7 +46,16 @@ apple_y_train=apple_train_set[1:1258]
 apple_x_train=np.reshape(apple_x_train,(1257,1,1))
 
 #**********AMAZON**********
+amazon_train_set=pd.read_csv("Amazon_Stock_Price_Train.csv")
+amazon_train_set=amazon_train_set.iloc[:,1:2].values
 
+amazon_scaler=MinMaxScaler()
+amazon_train_set=amazon_scaler.fit_transform(amazon_train_set)
+
+amazon_x_train=amazon_train_set[0:1257]
+amazon_y_train=amazon_train_set[1:1258]
+
+amazon_x_train=np.reshape(amazon_x_train,(1257,1,1))
 
 #**********MICROSOFT**********
 
