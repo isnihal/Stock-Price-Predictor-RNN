@@ -47,5 +47,6 @@ rnn=Sequential()
 #Input shape:timeframe and number of input nodes
 rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(1,1)))
 
-
+#Adding the output layer
+rnn.add(Dense(units=6))
 
