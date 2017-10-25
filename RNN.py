@@ -191,7 +191,15 @@ microsoft_predicted_stock_price=microsoft_scaler.inverse_transform(microsoft_pre
 
 
 #**********TESLA**********
+tesla_test_set=pd.read_csv("Tesla_Stock_Price_Test.csv")
+tesla_real_stock_price=tesla_test_set.iloc[:,1:2].values
 
+tesla_inputs=tesla_real_stock_price
+tesla_inputs=tesla_scaler.transform(tesla_inputs)
+tesla_inputs=np.reshape(tesla_inputs,(19,1,1))
+
+tesla_predicted_stock_price=tesla_rnn.predict(tesla_inputs)
+tesla_predicted_stock_price=tesla_scaler.inverse_transform(tesla_predicted_stock_price)
 
 
 #PART 4:Plotting
@@ -249,5 +257,12 @@ plt.show()
 
 
 #**********TESLA**********
-
+tesla_figure=plt.figure()
+plt.plot(tesla_real_stock_price,color='red',label='Real Price')
+plt.plot(tesla_predicted_stock_price,color='blue',label='Predicted Price')
+plt.xlabel("Days")
+plt.ylabel("Stock Price($)")
+plt.title("Tesla Stock Price Prediction (Jan 2017)")
+plt.legend()
+plt.show()
 
