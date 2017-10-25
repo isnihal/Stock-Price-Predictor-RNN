@@ -71,7 +71,16 @@ microsoft_x_train=np.reshape(microsoft_x_train,(1257,1,1))
 
 
 #**********TESLA**********
+tesla_train_set=pd.read_csv("Tesla_Stock_Price_Train.csv")
+tesla_train_set=tesla_train_set.iloc[:,1:2].values
 
+tesla_scaler=MinMaxScaler()
+tesla_train_set=tesla_scaler.fit_transform(tesla_train_set)
+
+tesla_x_train=tesla_train_set[0:1257]
+tesla_y_train=tesla_train_set[1:1258]
+
+tesla_x_train=np.reshape(tesla_x_train,(1257,1,1))
 
 
 #PART 2:Neural Network
@@ -166,6 +175,15 @@ amazon_predicted_stock_price=amazon_rnn.predict(amazon_inputs)
 amazon_predicted_stock_price=amazon_scaler.inverse_transform(amazon_predicted_stock_price)
 
 #**********MICROSOFT**********
+microsoft_test_set=pd.read_csv("Microsoft_Stock_Price_Test.csv")
+microsoft_real_stock_price=microsoft_test_set.iloc[:,1:2].values
+
+microsoft_inputs=microsoft_real_stock_price
+microsoft_inputs=microsoft_scaler.transform(microsoft_inputs)
+microsoft_inputs=np.reshape(microsoft_inputs,(19,1,1))
+
+microsoft_predicted_stock_price=microsoft_rnn.predict(microsoft_inputs)
+microsoft_predicted_stock_price=microsoft_scaler.inverse_transform(microsoft_predicted_stock_price)
 
 
 #**********TESLA**********
@@ -216,6 +234,14 @@ plt.legend()
 plt.show()
 
 #**********MICROSOFT**********
+microsoft_figure=plt.figure()
+plt.plot(microsoft_real_stock_price,color='red',label='Real Price')
+plt.plot(microsoft_predicted_stock_price,color='blue',label='Predicted Price')
+plt.xlabel("Days")
+plt.ylabel("Stock Price($)")
+plt.title("Microsoft Stock Price Prediction (Jan 2017)")
+plt.legend()
+plt.show()
 
 
 #**********TESLA**********
