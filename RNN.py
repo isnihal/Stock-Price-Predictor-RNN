@@ -43,6 +43,9 @@ from keras.layers import LSTM
 #Initalizing the RNN
 rnn=Sequential()
 
+#Adding the LSTM RNN Input layer
+#Input shape:timeframe and number of input nodes
+rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(1,1)))
 
 
 
