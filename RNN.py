@@ -55,3 +55,13 @@ rnn.compile(optimizer='adam',loss='mean_squared_error')
 
 #Fitting the RNN
 rnn.fit(x_train,y_train,batch_size=16,epochs=200)
+
+
+#Prediction
+
+#Importing the test set
+test_set=pd.read_csv("Google_Stock_Price_Test.csv")
+#Splitting the opening price
+real_stock_price=test_set.iloc[:,1:2].values
+
+
