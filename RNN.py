@@ -69,4 +69,8 @@ inputs=real_stock_price
 inputs=scaler.transform(inputs)
 inputs=np.reshape(inputs,(20,1,1))
 
+#Prediciting the stock prices for first 20 days of January 2017
+predicted_stock_price=rnn.predict(inputs)
+#Inverse scaling the predicted prices
+predicted_stock_price=scaler.inverse_transform(predicted_stock_price)
 
