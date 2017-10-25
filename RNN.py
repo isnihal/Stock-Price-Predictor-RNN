@@ -74,3 +74,11 @@ predicted_stock_price=rnn.predict(inputs)
 #Inverse scaling the predicted prices
 predicted_stock_price=scaler.inverse_transform(predicted_stock_price)
 
+#Plotting
+plt.plot(real_stock_price,color='red',label='Real Price')
+plt.plot(predicted_stock_price,color='blue',label='Predicted Price')
+plt.xlabel("Days")
+plt.ylabel("Stock Price($)")
+plt.title("Google Stock Price Prediction (Jan 2017)")
+plt.legend()
+plt.show()
