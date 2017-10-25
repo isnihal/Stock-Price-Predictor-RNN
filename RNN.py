@@ -135,6 +135,7 @@ apple_predicted_stock_price=apple_scaler.inverse_transform(apple_predicted_stock
 #PART 4:Plotting
 
 #**********GOOGLE**********
+google_figure=plt.figure()
 plt.plot(google_real_stock_price,color='red',label='Real Price')
 plt.plot(google_predicted_stock_price,color='blue',label='Predicted Price')
 plt.xlabel("Days")
@@ -144,7 +145,14 @@ plt.legend()
 plt.show()
 
 #**********APPLE**********
-
+apple_figure=plt.figure()
+plt.plot(apple_real_stock_price,color='red',label='Real Price')
+plt.plot(apple_predicted_stock_price,color='blue',label='Predicted Price')
+plt.xlabel("Days")
+plt.ylabel("Stock Price($)")
+plt.title("Apple Stock Price Prediction (Jan 2017)")
+plt.legend()
+plt.show()
 
 #**********AMAZON**********
 
