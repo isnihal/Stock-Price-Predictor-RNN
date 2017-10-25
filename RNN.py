@@ -128,7 +128,11 @@ microsoft_rnn.fit(microsoft_x_train,microsoft_y_train,batch_size=16,epochs=200)
 
 
 #**********TESLA**********
-
+tesla_rnn=Sequential()
+tesla_rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(None,1)))
+tesla_rnn.add(Dense(units=1))
+tesla_rnn.compile(optimizer='adam',loss='mean_squared_error')
+tesla_rnn.fit(tesla_x_train,tesla_y_train,batch_size=16,epochs=200)
 
 
 #PART 3:Prediction
