@@ -15,7 +15,7 @@ from sklearn.preprocessing import MinMaxScaler
 #Importing the training set & Splitting to opening price,2D import to fit the RNN
 
 #**********GOOGLE**********
-google_train_set=pd.read_csv("Google_Stock_Price_Train.csv")
+google_train_set=pd.read_csv("Dataset/Google_Stock_Price_Train.csv")
 google_train_set=google_train_set.iloc[:,1:2].values
 
 
@@ -34,7 +34,7 @@ google_y_train=google_train_set[1:1258]
 google_x_train=np.reshape(google_x_train,(1257,1,1))
 
 #**********APPLE**********
-apple_train_set=pd.read_csv("Apple_Stock_Price_Train.csv")
+apple_train_set=pd.read_csv("Dataset/Apple_Stock_Price_Train.csv")
 apple_train_set=apple_train_set.iloc[:,1:2]
 
 apple_scaler=MinMaxScaler()
@@ -46,7 +46,7 @@ apple_y_train=apple_train_set[1:1258]
 apple_x_train=np.reshape(apple_x_train,(1257,1,1))
 
 #**********AMAZON**********
-amazon_train_set=pd.read_csv("Amazon_Stock_Price_Train.csv")
+amazon_train_set=pd.read_csv("Dataset/Amazon_Stock_Price_Train.csv")
 amazon_train_set=amazon_train_set.iloc[:,1:2].values
 
 amazon_scaler=MinMaxScaler()
@@ -58,7 +58,7 @@ amazon_y_train=amazon_train_set[1:1258]
 amazon_x_train=np.reshape(amazon_x_train,(1257,1,1))
 
 #**********MICROSOFT**********
-microsoft_train_set=pd.read_csv("Microsoft_Stock_Price_Train.csv")
+microsoft_train_set=pd.read_csv("Dataset/Microsoft_Stock_Price_Train.csv")
 microsoft_train_set=microsoft_train_set.iloc[:,1:2].values
 
 microsoft_scaler=MinMaxScaler()
@@ -71,7 +71,7 @@ microsoft_x_train=np.reshape(microsoft_x_train,(1257,1,1))
 
 
 #**********TESLA**********
-tesla_train_set=pd.read_csv("Tesla_Stock_Price_Train.csv")
+tesla_train_set=pd.read_csv("Dataset/Tesla_Stock_Price_Train.csv")
 tesla_train_set=tesla_train_set.iloc[:,1:2].values
 
 tesla_scaler=MinMaxScaler()
@@ -139,7 +139,7 @@ tesla_rnn.fit(tesla_x_train,tesla_y_train,batch_size=16,epochs=200)
 
 
 #Importing the test set
-google_test_set=pd.read_csv("Google_Stock_Price_Test.csv")
+google_test_set=pd.read_csv("Dataset/Google_Stock_Price_Test.csv")
 #Splitting the opening price
 google_real_stock_price=google_test_set.iloc[:,1:2].values
 
@@ -156,7 +156,7 @@ google_predicted_stock_price=google_rnn.predict(google_inputs)
 google_predicted_stock_price=google_scaler.inverse_transform(google_predicted_stock_price)
 
 #**********APPLE**********
-apple_test_set=pd.read_csv("Apple_Stock_Price_Test.csv")
+apple_test_set=pd.read_csv("Dataset/Apple_Stock_Price_Test.csv")
 apple_real_stock_price=apple_test_set.iloc[:,1:2].values
 
 apple_inputs=apple_real_stock_price
@@ -168,7 +168,7 @@ apple_predicted_stock_price=apple_scaler.inverse_transform(apple_predicted_stock
 
 
 #**********AMAZON**********
-amazon_test_set=pd.read_csv("Amazon_Stock_Price_Test.csv")
+amazon_test_set=pd.read_csv("Dataset/Amazon_Stock_Price_Test.csv")
 amazon_real_stock_price=amazon_test_set.iloc[:,1:2].values
 
 amazon_inputs=amazon_real_stock_price
@@ -179,7 +179,7 @@ amazon_predicted_stock_price=amazon_rnn.predict(amazon_inputs)
 amazon_predicted_stock_price=amazon_scaler.inverse_transform(amazon_predicted_stock_price)
 
 #**********MICROSOFT**********
-microsoft_test_set=pd.read_csv("Microsoft_Stock_Price_Test.csv")
+microsoft_test_set=pd.read_csv("Dataset/Microsoft_Stock_Price_Test.csv")
 microsoft_real_stock_price=microsoft_test_set.iloc[:,1:2].values
 
 microsoft_inputs=microsoft_real_stock_price
@@ -191,7 +191,7 @@ microsoft_predicted_stock_price=microsoft_scaler.inverse_transform(microsoft_pre
 
 
 #**********TESLA**********
-tesla_test_set=pd.read_csv("Tesla_Stock_Price_Test.csv")
+tesla_test_set=pd.read_csv("Dataset/Tesla_Stock_Price_Test.csv")
 tesla_real_stock_price=tesla_test_set.iloc[:,1:2].values
 
 tesla_inputs=tesla_real_stock_price
