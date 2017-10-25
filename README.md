@@ -1,11 +1,9 @@
 # Final Year Project- Stock-Price-Predictor-RNN
 
-![Optional Text](../master/google.png)
-
-![Optional Text](../master/apple.png)
-
-![Optional Text](../master/amazon.png)
-
-![Optional Text](../master/microsoft.png)
-
-![Optional Text](../master/tesla.png)
+<p align="center">
+  <img src="google.png" width="350",height="350"/>
+  <img src="apple.png" width="350",height="350"/>
+  <img src="amazon.png" width="350",height="350"/>
+  <img src="microsoft.png" width="350",height="350"/>
+  <img src="tesla.png" width="350",height="350"/>
+</p>
