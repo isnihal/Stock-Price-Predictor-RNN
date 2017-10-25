@@ -58,6 +58,16 @@ amazon_y_train=amazon_train_set[1:1258]
 amazon_x_train=np.reshape(amazon_x_train,(1257,1,1))
 
 #**********MICROSOFT**********
+microsoft_train_set=pd.read_csv("Microsoft_Stock_Price_Train.csv")
+microsoft_train_set=microsoft_train_set.iloc[:,1:2].values
+
+microsoft_scaler=MinMaxScaler()
+microsoft_train_set=microsoft_scaler.fit_transform(microsoft_train_set)
+
+microsoft_x_train=microsoft_train_set[0:1257]
+microsoft_y_train=microsoft_train_set[1:1258]
+
+microsoft_x_train=np.reshape(microsoft_x_train,(1257,1,1))
 
 
 #**********TESLA**********
@@ -101,6 +111,11 @@ amazon_rnn.fit(amazon_x_train,amazon_y_train,batch_size=16,epochs=200)
 
 
 #**********MICROSOFT**********
+microsoft_rnn=Sequential()
+microsoft_rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(None,1)))
+microsoft_rnn.add(Dense(units=1))
+microsoft_rnn.compile(optimizer='adam',loss='mean_squared_error')
+microsoft_rnn.fit(microsoft_x_train,microsoft_y_train,batch_size=16,epochs=200)
 
 
 #**********TESLA**********
