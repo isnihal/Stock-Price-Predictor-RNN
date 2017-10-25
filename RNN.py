@@ -33,3 +33,16 @@ y_train=train_set[1:1258]
 
 
 
+#Neural Network
+
+#Importing the libraries
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
+
+#Initalizing the RNN
+rnn=Sequential()
+
+
+
+
