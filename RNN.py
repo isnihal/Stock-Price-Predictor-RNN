@@ -64,4 +64,9 @@ test_set=pd.read_csv("Google_Stock_Price_Test.csv")
 #Splitting the opening price
 real_stock_price=test_set.iloc[:,1:2].values
 
+#Scaling the real prices,int the same format of training set
+inputs=real_stock_price
+inputs=scaler.transform(inputs)
+inputs=np.reshape(inputs,(20,1,1))
+
 
