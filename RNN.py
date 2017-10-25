@@ -91,12 +91,14 @@ apple_rnn.add(Dense(units=1))
 apple_rnn.compile(optimizer='adam',loss='mean_squared_error')
 apple_rnn.fit(apple_x_train,apple_y_train,batch_size=16,epochs=200)
 
+
 #**********AMAZON**********
 amazon_rnn=Sequential()
 amazon_rnn.add(LSTM(units=4,activation='sigmoid',input_shape=(None,1)))
 amazon_rnn.add(Dense(units=1))
 amazon_rnn.compile(optimizer='adam',loss='mean_squared_error')
 amazon_rnn.fit(amazon_x_train,amazon_y_train,batch_size=16,epochs=200)
+
 
 #**********MICROSOFT**********
 
@@ -135,8 +137,18 @@ apple_inputs=np.reshape(apple_inputs,(19,1,1))
 
 apple_predicted_stock_price=apple_rnn.predict(apple_inputs)
 apple_predicted_stock_price=apple_scaler.inverse_transform(apple_predicted_stock_price)
-#**********AMAZON**********
 
+
+#**********AMAZON**********
+amazon_test_set=pd.read_csv("Amazon_Stock_Price_Test.csv")
+amazon_real_stock_price=amazon_test_set.iloc[:,1:2].values
+
+amazon_inputs=amazon_real_stock_price
+amazon_inputs=amazon_scaler.transform(amazon_inputs)
+amazon_inputs=np.reshape(amazon_inputs,(19,1,1))
+
+amazon_predicted_stock_price=amazon_rnn.predict(amazon_inputs)
+amazon_predicted_stock_price=amazon_scaler.inverse_transform(amazon_predicted_stock_price)
 
 #**********MICROSOFT**********
 
@@ -148,13 +160,24 @@ apple_predicted_stock_price=apple_scaler.inverse_transform(apple_predicted_stock
 #PART 4:Plotting
 
 #**********GOOGLE**********
+#Initalizing the frame
 google_figure=plt.figure()
+
+#Plotting the values
 plt.plot(google_real_stock_price,color='red',label='Real Price')
 plt.plot(google_predicted_stock_price,color='blue',label='Predicted Price')
+
+#Axis names
 plt.xlabel("Days")
 plt.ylabel("Stock Price($)")
+
+#Graph name
 plt.title("Google Stock Price Prediction (Jan 2017)")
+
+#Show legend
 plt.legend()
+
+#Show the graph
 plt.show()
 
 #**********APPLE**********
@@ -168,7 +191,14 @@ plt.legend()
 plt.show()
 
 #**********AMAZON**********
-
+amazon_figure=plt.figure()
+plt.plot(amazon_real_stock_price,color='red',label='Real Price')
+plt.plot(amazon_predicted_stock_price,color='blue',label='Predicted Price')
+plt.xlabel("Days")
+plt.ylabel("Stock Price($)")
+plt.title("Amazon Stock Price Prediction (Jan 2017)")
+plt.legend()
+plt.show()
 
 #**********MICROSOFT**********
 
