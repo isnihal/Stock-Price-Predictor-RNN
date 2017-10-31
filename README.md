@@ -1,3 +1,3 @@
 # Final Year Project- Stock-Price-Predictor-RNN
 
-<img src="Google.png",height="350",width="350"/>
+![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Google.png)
