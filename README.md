@@ -2,20 +2,20 @@
 
 # GOOGLE
 
-![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Google.png)
+![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Google_.png)
 
 # APPLE
 
-![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Apple.png)
+![Image of Apple Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Apple.png)
 
 # TESLA
 
-![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Tesla.png)
+![Image of Tesla Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Tesla.png)
 
 # MICROSOFT
 
-![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Microsoft.png)
+![Image of Microsoft Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Microsoft.png)
 
 # AMAZON
 
-![Image of Google Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Amazon.png)
+![Image of Amazon Stock](https://github.com/Nihal369/Stock-Price-Predictor-RNN/blob/master/Graphs/Amazon.png)
